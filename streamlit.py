@@ -7,10 +7,10 @@ st.image("images/Iris.png")
 SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm = setting_data()
 
 #get user input
-INPUT_sepal_length = st.selectbox("Sepal Length", SepalLengthCm)
-INPUT_sepal_width = st.selectbox("Sepal Width", SepalWidthCm)
-INPUT_petal_length = st.selectbox("Petal Length", PetalLengthCm)
-INPUT_petal_width = st.selectbox("Petal Width", PetalWidthCm)
+INPUT_sepal_length = st.selectbox("Sepal Length", sorted(SepalLengthCm))
+INPUT_sepal_width = st.selectbox("Sepal Width", sorted(SepalWidthCm))
+INPUT_petal_length = st.selectbox("Petal Length", sorted(PetalLengthCm))
+INPUT_petal_width = st.selectbox("Petal Width", sorted(PetalWidthCm))
 
 button = st.button("Predict Species")
 

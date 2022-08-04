@@ -7,13 +7,19 @@ def load_method():
     model = pickle.load(open(path, 'rb'))
     return model
 
-def test_case():
-    data = {"SepalLengthCm": 5.4,"SepalWidthCm": 3.9,"PetalLengthCm": 0.1,"PetalWidthCm": 1.4}
+def setting_data():
+    data = pd.read_csv("data/Iris.csv")
+    SepalLengthCm = data["SepalLengthCm"].unique()
+    SepalWidthCm = data["SepalWidthCm"].unique()
+    PetalLengthCm = data["PetalLengthCm"].unique()
+    PetalWidthCm = data["PetalWidthCm"].unique()
+    return SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm
+
+def passing_data(SepalLengthCm, SepalWidthCm, PetalLengthCm, PetalWidthCm):
+    data = {"SepalLengthCm": SepalLengthCm,"SepalWidthCm": SepalWidthCm,"PetalLengthCm": PetalLengthCm,"PetalWidthCm": PetalWidthCm}
     test_input = pd.DataFrame(data, index=[0])
     return test_input
 
-if __name__ == '__main__':
-    model = load_method()
-    input = test_case()
-    pred = model.predict(input)
-    print(pred[0])
+def gen_prediction(test_input, model):
+    pred = model.predict(test_input)
+    return pred[0]
